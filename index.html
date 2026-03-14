@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janisha S Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .project-image {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.04);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    }
+
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: blob-float 20s infinite ease-in-out;
+    }
+    
+    @keyframes blob-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+    
+    .blob-1 {
+      top: 10%;
+      right: 10%;
+      width: 400px;
+      height: 400px;
+      animation-delay: 0s;
+    }
+    
+    .blob-2 {
+      bottom: 10%;
+      left: 10%;
+      width: 350px;
+      height: 350px;
+      animation-delay: 4s;
+    }
+    
+    .section-fade {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .cert-logo-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .cert-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;   /* IMPORTANT */
+      padding: 8px;
+    }
+
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .skill-progress {
+      transition: width 1s ease-out;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .social-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-circle svg {
+  transform: translateY(1px);
+}
+
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full smooth-scroll">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Floating Background Blobs -->
+   <div class="blob blob-1" id="blob-1"></div>
+   <div class="blob blob-2" id="blob-2"></div><!-- Sticky Navigation -->
+   <nav id="navbar" class="fixed top-0 w-full z-50 nav-blur">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex justify-between items-center">
+      <h1 id="nav-name" class="text-2xl font-bold"></h1>
+      <div class="flex gap-8"><a href="#home" class="nav-link font-medium hover:scale-110 transition-transform">Home</a> <a href="#about" class="nav-link font-medium hover:scale-110 transition-transform">About</a> <a href="#skills" class="nav-link font-medium hover:scale-110 transition-transform">Skills</a> <a href="#projects" class="nav-link font-medium hover:scale-110 transition-transform">Projects</a> <a href="#experience" class="nav-link font-medium hover:scale-110 transition-transform">Experience</a> <a href="#certificates" class="nav-link font-medium hover:scale-110 transition-transform">Certificates</a> <a href="#contact" class="nav-link font-medium hover:scale-110 transition-transform">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="w-full min-h-screen flex items-center justify-center relative">
+    <div class="max-w-5xl mx-auto px-6 text-center section-fade relative z-10">
+     <!-- <div class="mb-8">
+      <div class="w-32 h-32 mx-auto rounded-full flex items-center justify-center hero-icon-bg overflow-hidden"><img id="hero-logo" src="" alt="Logo" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+      </div> 
+     </div> -->
+     <h1 id="hero-name" class="text-7xl font-bold mb-6 gradient-text"></h1>
+     <p id="hero-tagline" class="text-3xl mb-12"></p><a id="cv-download-btn" href="https://example.com/cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-block px-10 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform shadow-lg"> Download CV </a>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="w-full min-h-screen flex items-center py-24 relative">
+    <div class="max-w-6xl mx-auto px-6">
+     <h2 id="about-heading" class="text-5xl font-bold mb-16 text-center"></h2>
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="about-content rounded-3xl p-10 section-fade">
+       <p id="about-description" class="text-xl leading-relaxed mb-8"></p>
+       <div class="flex gap-4">
+         <div class="stat-box flex-1 rounded-2xl p-6 text-center">
+         <div class="text-4xl font-bold mb-2">
+          3+
+         </div>
+         <div class="text-sm">
+          Internships
+         </div>
+        </div> 
+        <div class="stat-box flex-1 rounded-2xl p-6 text-center">
+         <div class="text-4xl font-bold mb-2">
+          10+
+         </div>
+         <div class="text-sm">
+          Projects
+         </div>
+        </div>
+       </div> 
+      </div> 
+      <div class="grid grid-cols-1 gap-6">
+       <div class="expertise-card rounded-2xl p-8 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="icon-wrapper rounded-xl p-4">
+          <svg class="w-12 h-12" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="60" width="15" height="30" fill="currentColor" rx="3" /> <rect x="42.5" y="45" width="15" height="45" fill="currentColor" rx="3" /> <rect x="65" y="30" width="15" height="60" fill="currentColor" rx="3" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-2">Data Science & Analytics</h3>
+          <p class="expertise-text">Perform exploratory data analysis, feature engineering, and statistical modeling to extract insights and support data-driven business decisions.</p>
+         </div>
+        </div>
+       </div>
+       <div class="expertise-card rounded-2xl p-8 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="icon-wrapper rounded-xl p-4">
+          <svg class="w-12 h-12" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="30" r="10" fill="currentColor" /> <circle cx="30" cy="70" r="10" fill="currentColor" /> <circle cx="70" cy="70" r="10" fill="currentColor" /> <line x1="50" y1="40" x2="35" y2="65" stroke="currentColor" stroke-width="4" /> <line x1="50" y1="40" x2="65" y2="65" stroke="currentColor" stroke-width="4" />
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-2">Machine Learning Engineering</h3>
+          <p class="expertise-text">Build, evaluate, and optimize ML models using structured pipelines, ensuring reproducibility, robustness, and performance across real-world datasets.</p>
+         </div>
+        </div>
+       </div>
+       <div class="expertise-card rounded-2xl p-8 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="icon-wrapper rounded-xl p-4">
+          <svg class="w-12 h-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="24" y="18" width="52" height="32" rx="6" fill="currentColor"/> <circle cx="24" cy="74" r="6" fill="currentColor"/> <circle cx="50" cy="74" r="6" fill="currentColor"/> <circle cx="76" cy="74" r="6" fill="currentColor"/> <path d="M50 50 V64" stroke="currentColor" stroke-width="4" stroke-linecap="round"/> <path d="M50 64 H24 M50 64 H76" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+         </div>
+         <div>
+          <h3 class="text-2xl font-bold mb-2">Model Deployment & Applications</h3>
+          <p class="expertise-text">Deploy machine learning models using Streamlit and Flask, integrating them into interactive web applications. Experience delivering prediction systems as user-facing tools with end-to-end data flow from input to inference.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="w-full min-h-screen py-24">
+    <div class="max-w-7xl mx-auto px-6">
+     <h2 id="skills-heading" class="text-5xl font-bold mb-16 text-center"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Python -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-python-img" src="" alt="Python" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Python</h3>
+       <p class="text-sm skill-desc">Primary language for data science &amp; ML</p>
+      </div><!-- Pandas -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-pandas-img" src="" alt="Pandas" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Pandas</h3>
+       <p class="text-sm skill-desc">Data manipulation &amp; analysis</p>
+      </div><!-- Numpy -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-numpy-img" src="" alt="Numpy" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Numpy</h3>
+       <p class="text-sm skill-desc">Numerical computing &amp; arrays</p>
+      </div><!-- Tableau -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-tableau-img" src="" alt="Tableau" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Tableau</h3>
+       <p class="text-sm skill-desc">Interactive data visualization</p>
+      </div><!-- Power BI -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-powerbi-img" src="" alt="Power BI" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Power BI</h3>
+       <p class="text-sm skill-desc">Interactive data visualization</p>
+      </div><!-- SQL-->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-sql-img" src="" alt="SQL" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">SQL</h3>
+       <p class="text-sm skill-desc">Database management &amp; queries</p>
+      </div><!-- Scikit-learn -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-sklearn-img" src="" alt="Scikit-learn" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Scikit-learn</h3>
+       <p class="text-sm skill-desc">Classical ML algorithms</p>
+      </div><!-- Matplotlib-->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-matplotlib-img" src="" alt="Matplotlib" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Matplotlib</h3>
+       <p class="text-sm skill-desc">Data visualization library</p>
+      </div><!-- Seaborn -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-seaborn-img" src="" alt="Seaborn" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Seaborn</h3>
+       <p class="text-sm skill-desc">Statistical data visualization</p>
+      </div><!-- Streamlit -->
+      <div class="skill-card rounded-2xl p-8 text-center card-hover">
+       <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center"><img id="skill-streamlit-img" src="" alt="Streamlit" class="w-20 h-20 object-contain" onerror="this.style.display='none';">
+       </div>
+       <h3 class="text-xl font-bold mb-2">Streamlit</h3>
+       <p class="text-sm skill-desc">Interactive web apps</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projects Section -->
+   <section id="projects" class="w-full min-h-screen py-24">
+    <div class="max-w-7xl mx-auto px-6">
+     <h2 id="projects-heading" class="text-5xl font-bold mb-16 text-center"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Project 1 -->
+      <div class="project-card rounded-3xl p-8 card-hover">
+       <img src="https://www.shutterstock.com/image-illustration/electric-light-bulb-bright-polygonal-600nw-2390443591.jpg"
+        alt="Household Electricity Prediction" class="project-image w-full h-40 object-cover rounded-2xl mb-6"/> 
+       <h3 class="text-3xl font-bold mb-4 project-title">Household Electricity Consumption & Bill Prediction</h3>
+       <p class="text-lg mb-6 project-desc">An end-to-end Machine Learning web app that predicts monthly household electricity consumption and estimated bills using a Random Forest Regressor, deployed with Streamlit and a modern UI.</p>
+       <div class="flex flex-wrap gap-3 mb-6"><span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Scikit-Learn</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Random Forest Regressor</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Decision Tree Regressor</span>
+       </div><a href="https://household-electricity-consumption-bill-prediction.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 font-semibold"> View Project → </a>
+      </div><!-- Project 2 -->
+      <div class="project-card rounded-3xl p-8 card-hover">
+       <img src="https://static.vecteezy.com/system/resources/thumbnails/020/863/537/small/car-2023-technology-background-tech-ev-charging-station-for-electric-car-for-transport-automotive-automobile-industrial-and-car-eco-power-produced-2023-technology-charger-station-tech-co2-photo.jpg"
+        alt="CO2 Emission Prediction" class="project-image w-full h-40 object-cover rounded-2xl mb-6"/>
+       <h3 class="text-3xl font-bold mb-4 project-title">CO2 Emission Prediction</h3>
+       <p class="text-lg mb-6 project-desc">A machine learning - powered web application that predicts vehicle CO₂ emissions using Polynomial Regression, built with a production-ready scikit-learn pipeline and deployed via Streamlit to deliver real-time, data-driven insights.</p>
+       <div class="flex flex-wrap gap-3 mb-6"><span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Scikit-Learn</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Polynomial Regression</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Pipeline</span>
+       </div><a href="https://co2emissionprediction-app.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 font-semibold"> View Project → </a>
+      </div><!-- Project 3 -->
+      <div class="project-card rounded-3xl p-8 card-hover">
+       <img src="https://www.shutterstock.com/image-photo/target-market-audience-marketing-segmentation-600nw-2603901487.jpg"
+        alt="Customer Segmentation & Recommendation" class="project-image w-full h-40 object-cover rounded-2xl mb-6"/>
+       <h3 class="text-3xl font-bold mb-4 project-title">Customer Segmentation & Recommendation</h3>
+       <p class="text-lg mb-6 project-desc">A data-driven customer segmentation and recommendation solution that leverages KNN-based similarity modeling to identify customer groups and deliver personalized product recommendations, supporting targeted marketing and improved customer engagement.</p>
+       <div class="flex flex-wrap gap-3 mb-6"><span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">KNN</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Scikit-Learn</span>
+       </div><a href="https://github.com/Janisha2005/Customer_Segmentation_And_Recommendation_Using_KNN" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 font-semibold"> View Project → </a>
+      </div><!-- Project 4 -->
+      <div class="project-card rounded-3xl p-8 card-hover">
+       <img src="https://wallpapers.com/images/hd/stock-market-dollar-prices-and-percentage-tm030jf9o3kl6k5p.jpg"
+        alt="Stock Price Prediction" class="project-image w-full h-40 object-cover rounded-2xl mb-6"/>
+       <h3 class="text-3xl font-bold mb-4 project-title">Stock Price Prediction</h3>
+       <p class="text-lg mb-6 project-desc">A predictive analytics solution that uses LSTM and reinforcement learning techniques to forecast U.S. stock prices, enabling data-informed investment insights and decision support.</p>
+       <div class="flex flex-wrap gap-3 mb-6"><span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">LSTM</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Reinforcement Learning</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-medium">Streamlit</span>
+       </div><a href="https://github.com/Janisha2005/STOCK_PRICE_PREDICTION_USING_LSTM_AND_RL" target="_blank" rel="noopener noreferrer" class="project-link inline-flex items-center gap-2 font-semibold"> View Project → </a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Experience Section -->
+   <section id="experience" class="w-full min-h-screen py-24">
+    <div class="max-w-5xl mx-auto px-6">
+     <h2 id="experience-heading" class="text-5xl font-bold mb-16 text-center"></h2>
+     <div class="relative"><!-- Timeline line -->
+      <div class="timeline-line absolute left-8 top-0 bottom-0 w-1"></div>
+      <div class="space-y-12"><!-- Experience 1 -->
+       <div class="relative pl-24">
+        <div class="timeline-dot absolute left-5 top-8 w-7 h-7 rounded-full"></div>
+        <div class="exp-card rounded-2xl p-8">
+         <div class="flex justify-between items-start mb-4 flex-wrap gap-4">
+          <div>
+           <h3 class="text-3xl font-bold mb-2 exp-title">Machine learning intern</h3>
+           <p class="text-xl exp-company mb-2">VCodez</p>
+          </div><span class="exp-badge px-5 py-2 rounded-full font-semibold">March 2025 - May 2025</span>
+         </div>
+         <p class="text-lg exp-desc">Built, trained, and evaluated supervised machine learning models using Scikit-learn for real-world datasets.
+          Applied feature engineering, data preprocessing, and hyperparameter tuning to improve model accuracy and reliability.
+          Conducted exploratory data analysis and performance evaluation to support data-driven insights.</p>
+        </div>
+       </div><!-- Experience 2 -->
+       <div class="relative pl-24">
+        <div class="timeline-dot absolute left-5 top-8 w-7 h-7 rounded-full"></div>
+        <div class="exp-card rounded-2xl p-8">
+         <div class="flex justify-between items-start mb-4 flex-wrap gap-4">
+          <div>
+           <h3 class="text-3xl font-bold mb-2 exp-title">Data Science Intern</h3>
+           <p class="text-xl exp-company mb-2">CodTech IT Solutions</p>
+          </div><span class="exp-badge px-5 py-2 rounded-full font-semibold">Dec 2024 - Jan 2025</span>
+         </div>
+         <p class="text-lg exp-desc">Designed and developed a recommendation system using content-based filtering techniques.
+          Implemented the solution with Python, Scikit-learn, and Streamlit, delivering an interactive and user-friendly ML web application.
+          Analyzed user behavior data and optimized model performance for improved recommendations.</p>
+        </div>
+       </div><!-- Experience 3 -->
+       <div class="relative pl-24">
+        <div class="timeline-dot absolute left-5 top-8 w-7 h-7 rounded-full"></div>
+        <div class="exp-card rounded-2xl p-8">
+         <div class="flex justify-between items-start mb-4 flex-wrap gap-4">
+          <div>
+           <h3 class="text-3xl font-bold mb-2 exp-title">Data Science Intern</h3>
+           <p class="text-xl exp-company mb-2">Yhills</p>
+          </div><span class="exp-badge px-5 py-2 rounded-full font-semibold">April 2024 - May 2024</span>
+         </div>
+         <p class="text-lg exp-desc">Trained and tested regression models to solve prediction-based problems on real-world datasets.
+          Performed data cleaning, preprocessing, and feature selection to enhance model performance.
+          Evaluated models using metrics such as RMSE and R², gaining hands-on experience in statistical modeling.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Certificates Section -->
+   <section id="certificates" class="w-full min-h-screen py-24">
+    <div class="max-w-6xl mx-auto px-6">
+     <h2 id="certificates-heading" class="text-5xl font-bold mb-16 text-center"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://www.topdataworks.com/assets/logo-nAXboQFX.png" alt="TopDataWorks Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">Hackathon</h3>
+       <p class="text-sm cert-org mb-1">TopDataWorks</p>
+       <p class="text-sm cert-year mb-4">2025</p><a href="https://drive.google.com/file/d/1gzwTE64hH65miK-CKoAb9lj0L0hARaDw/view?usp=drive_link"target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnszUktezChjjYXYZxQKsxJcopnLuh69J1A&s" alt="MIIT Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">Paper Presentation (Artificial Intelligence)</h3>
+       <p class="text-sm cert-org mb-1">MIIT</p>
+       <p class="text-sm cert-year mb-4">2025</p><a href="https://drive.google.com/file/d/1quv7mSAIeCvjpUVHxldg7dvRtQJK8j2j/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnszUktezChjjYXYZxQKsxJcopnLuh69J1A&s" alt="MIIT Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">Technical Quiz</h3>
+       <p class="text-sm cert-org mb-1">MIIT</p>
+       <p class="text-sm cert-year mb-4">2024</p><a href="https://drive.google.com/file/d/1kqQyAiYMovuTjHw1b_Xg9OSulJkOk5OD/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnszUktezChjjYXYZxQKsxJcopnLuh69J1A&s" alt="MIIT Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">Debugging</h3>
+       <p class="text-sm cert-org mb-1">MIIT</p>
+       <p class="text-sm cert-year mb-4">2024</p><a href="https://drive.google.com/file/d/1nzj4whn0tW8_Q92TvmLnFZwh4akwRtSh/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/1809/original/270760639_5326309587396780_994223935301210137_n__1_.jpg" alt="Guvi Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">SWAIT AI Learnathon</h3>
+       <p class="text-sm cert-org mb-1">Guvi | HCL Tech</p>
+       <p class="text-sm cert-year mb-4">2024</p><a href="https://drive.google.com/file/d/12RnIwyv31LvY08RfkXpdHQ_ZqIDg3NWP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+      <div class="cert-card rounded-2xl p-6 card-hover">
+       <div class="cert-logo-wrapper">
+          <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/1809/original/270760639_5326309587396780_994223935301210137_n__1_.jpg" alt="Guvi Logo" class="cert-logo" />
+        </div>
+       <h3 class="text-xl font-bold mb-2 cert-title">Data Science 101</h3>
+       <p class="text-sm cert-org mb-1">Guvi</p>
+       <p class="text-sm cert-year mb-4">2024</p><a href="https://drive.google.com/file/d/1fhyCynrwqYa3Ay-ykJ6dQyniG_u_EOHM/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-link text-sm font-semibold">View Certificate →</a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="w-full min-h-screen flex items-center py-24">
+    <div class="max-w-4xl mx-auto px-6 w-full">
+     <h2 id="contact-heading" class="text-5xl font-bold mb-8 text-center"></h2>
+     <p class="text-xl text-center mb-16 contact-intro">Let's collaborate on exciting data science projects!</p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="contact-card rounded-2xl p-8 text-center card-hover">
+       <div class="contact-icon-wrapper rounded-full p-6 inline-block mb-4">
+        <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="25" width="70" height="50" stroke="currentColor" stroke-width="3" fill="none" rx="4" /> <path d="M15 25 L50 55 L85 25" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-3 contact-label">Email</h3>
+       <p id="contact-email-text" class="text-sm contact-value break-all"></p>
+      </div>
+      <div class="contact-card rounded-2xl p-8 text-center card-hover">
+       <div class="contact-icon-wrapper rounded-full p-6 inline-block mb-4">
+        <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="20" width="40" height="60" rx="8" stroke="currentColor" stroke-width="3" fill="none" /> <line x1="42" y1="73" x2="58" y2="73" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-3 contact-label">Phone</h3>
+       <p id="contact-phone-text" class="text-sm contact-value"></p>
+      </div>
+      <div class="contact-card rounded-2xl p-8 text-center card-hover">
+       <div class="contact-icon-wrapper rounded-full p-6 inline-block mb-4">
+        <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 C38 20 28 30 28 42 C28 58 50 80 50 80 C50 80 72 58 72 42 C72 30 62 20 50 20 Z" stroke="currentColor" stroke-width="3" fill="none" /> <circle cx="50" cy="42" r="8" stroke="currentColor" stroke-width="3" fill="none" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold mb-3 contact-label">Location</h3>
+       <p id="contact-location-text" class="text-sm contact-value"></p>
+      </div>
+     </div>
+     <div class="flex justify-center gap-6">
+        <a href="https://www.linkedin.com/in/janisha-s-3a2b9a253" target="_blank" rel="noopener noreferrer" class="social-link social-circle hover:scale-110 transition-transform">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path d="M20.447 20.452h-3.554v-5.569 c0-1.328-.027-3.037-1.852-3.037 c-1.853 0-2.136 1.445-2.136 2.939 v5.667H9.351V9h3.414v1.561h.046 c.477-.9 1.637-1.85 3.37-1.85 c3.601 0 4.267 2.37 4.267 5.455 v6.286zM5.337 7.433 c-1.144 0-2.063-.926-2.063-2.065 c0-1.138.92-2.063 2.063-2.063 c1.14 0 2.064.925 2.064 2.063 c0 1.139-.925 2.065-2.064 2.065z M6.956 20.452H3.721V9h3.235v11.452z"/>
+          </svg></a>
+        <a href="https://github.com/Janisha2005" target="_blank" rel="noopener noreferrer" class="social-link social-circle hover:scale-110 transition-transform">
+          <svg class="w-8 h-8" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 C27 10 8 29 8 52 C8 70 19 85 35 90 C37 90 38 89 38 87 L38 81 C25 84 23 75 23 75 C21 71 19 69 19 69 C15 66 19 66 19 66 C23 66 25 70 25 70 C29 76 35 74 38 73 C38 71 39 69 41 68 C31 67 21 63 21 48 C21 43 23 39 25 36 C25 35 23 31 26 26 C26 26 29 25 37 30 C40 29 44 29 50 29 C56 29 60 29 63 30 C71 25 74 26 74 26 C77 31 75 35 75 36 C77 39 79 43 79 48 C79 63 69 67 59 68 C61 69 62 72 62 75 L62 87 C62 89 63 90 65 90 C81 85 92 70 92 52 C92 29 73 10 50 10 Z" />
+          </svg></a>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#0a0a0f",
+      surface_color: "#1a1a2e",
+      text_color: "#e0e0e0",
+      primary_action_color: "#667eea",
+      secondary_action_color: "#764ba2",
+      font_family: "Inter",
+      font_size: 16,
+      name: "Janisha S",
+      tagline: "Aspiring Data Scientist | Machine Learning Enthusiast",
+      cv_link: "https://drive.google.com/file/d/1SYIe81XW7yKq9A2qz9AYyQX-uh-SOCfZ/view?usp=drive_link",
+      about_title: "About Me",
+      about_text: `
+        <p class="mb-6">
+          I am a results-driven Data Science and Machine Learning professional with hands-on 
+          experience building and deploying end-to-end data-driven solutions. I work across the 
+          full lifecycle from data analysis and feature engineering to model development and 
+          deployment - delivering scalable, business-ready applications. I have deployed predictive 
+          models through interactive web applications using Streamlit and Flask, enabling real-time 
+          insights for use cases such as customer churn, forecasting, and recommendation systems, 
+          with a strong focus on translating complex data into actionable business value.
+        </p>
+      `,    
+      skills_title: "Technical Skills",
+      projects_title: "Recent Projects",
+      experience_title: "Experience",
+      certificates_title: "Competitions & Conferences",
+      contact_title: "Contact Me",
+      contact_email: "janishasekar@gmail.com",
+      contact_phone: "+91 8778698801",
+      contact_location: "Chennai, Tamil Nadu, India",
+      hero_logo_url: "https://via.placeholder.com/150",
+      skill_python_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      skill_pandas_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
+      skill_sql_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      skill_tableau_logo: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg",
+      skill_numpy_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+      skill_powerbi_logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/1200px-New_Power_BI_Logo.svg.png",
+      skill_sklearn_logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+      skill_matplotlib_logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg",
+      skill_seaborn_logo: "https://cdn.worldvectorlogo.com/logos/seaborn-1.svg",
+      skill_streamlit_logo: "https://icon.icepanel.io/Technology/svg/Streamlit.svg"
+    };
+
+    function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'system-ui, -apple-system, sans-serif';
+      const fullFontFamily = `${customFont}, ${baseFontStack}`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      document.body.style.fontFamily = fullFontFamily;
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      const appWrapper = document.getElementById('app-wrapper');
+      appWrapper.style.backgroundColor = bgColor;
+      appWrapper.style.color = textColor;
+      
+      // Blobs
+      document.getElementById('blob-1').style.backgroundColor = primaryColor;
+      document.getElementById('blob-2').style.backgroundColor = secondaryColor;
+      
+      // Navbar
+      const navbar = document.getElementById('navbar');
+      navbar.style.backgroundColor = `${surfaceColor}aa`;
+      navbar.style.borderBottom = `1px solid ${primaryColor}33`;
+      
+      document.getElementById('nav-name').textContent = config.name || defaultConfig.name;
+      document.getElementById('nav-name').style.color = primaryColor;
+      document.getElementById('nav-name').style.fontSize = `${baseSize * 1.5}px`;
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.style.color = textColor;
+        link.style.fontSize = `${baseSize}px`;
+      });
+      
+      // Hero Section
+      // const heroIconBg = document.querySelector('.hero-icon-bg');
+      // heroIconBg.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+      
+      // const heroLogo = document.getElementById('hero-logo');
+      // heroLogo.src = config.hero_logo_url || defaultConfig.hero_logo_url;
+      
+      document.getElementById('hero-name').textContent = config.name || defaultConfig.name;
+      document.getElementById('hero-name').style.fontSize = `${baseSize * 4.375}px`;
+      
+      document.getElementById('hero-tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('hero-tagline').style.color = textColor;
+      document.getElementById('hero-tagline').style.fontSize = `${baseSize * 1.875}px`;
+      
+      const cvBtn = document.getElementById('cv-download-btn');
+      cvBtn.href = config.cv_link || defaultConfig.cv_link;
+      cvBtn.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+      cvBtn.style.color = 'white';
+      cvBtn.style.fontSize = `${baseSize * 1.125}px`;
+      
+      // About Section
+      document.getElementById('about-heading').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-heading').style.color = primaryColor;
+      document.getElementById('about-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      const aboutContent = document.querySelector('.about-content');
+      aboutContent.style.backgroundColor = surfaceColor;
+      aboutContent.style.border = `1px solid ${primaryColor}33`;
+      
+      document.getElementById('about-description').innerHTML = config.about_text || defaultConfig.about_text;
+      document.getElementById('about-description').style.color = textColor;
+      document.getElementById('about-description').style.fontSize = `${baseSize * 1.25}px`;
+      
+      document.querySelectorAll('.stat-box').forEach(box => {
+        box.style.backgroundColor = bgColor;
+        box.style.border = `2px solid ${primaryColor}`;
+        box.querySelector('.text-4xl').style.color = primaryColor;
+        box.querySelector('.text-4xl').style.fontSize = `${baseSize * 2.5}px`;
+        box.querySelector('.text-sm').style.color = secondaryColor;
+        box.querySelector('.text-sm').style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      document.querySelectorAll('.expertise-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+        
+        const iconWrapper = card.querySelector('.icon-wrapper');
+        iconWrapper.style.background = `linear-gradient(135deg, ${primaryColor}22, ${secondaryColor}22)`;
+        iconWrapper.querySelector('svg').style.color = primaryColor;
+        
+        card.querySelector('h3').style.color = textColor;
+        card.querySelector('h3').style.fontSize = `${baseSize * 1.5}px`;
+        
+        const expertiseText = card.querySelector('.expertise-text');
+        expertiseText.style.color = secondaryColor;
+        expertiseText.style.fontSize = `${baseSize}px`;
+      });
+      
+      // Skills Section
+      document.getElementById('skills-heading').textContent = config.skills_title || defaultConfig.skills_title;
+      document.getElementById('skills-heading').style.color = primaryColor;
+      document.getElementById('skills-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      // Update skill logos
+      document.getElementById('skill-python-img').src = config.skill_python_logo || defaultConfig.skill_python_logo;
+      document.getElementById('skill-pandas-img').src = config.skill_pandas_logo || defaultConfig.skill_pandas_logo;
+      document.getElementById('skill-sql-img').src = config.skill_sql_logo || defaultConfig.skill_sql_logo;
+      document.getElementById('skill-tableau-img').src = config.skill_tableau_logo || defaultConfig.skill_tableau_logo;
+      document.getElementById('skill-powerbi-img').src = config.skill_powerbi_logo || defaultConfig.skill_powerbi_logo;
+      document.getElementById('skill-numpy-img').src = config.skill_numpy_logo || defaultConfig.skill_numpy_logo;
+      document.getElementById('skill-sklearn-img').src = config.skill_sklearn_logo || defaultConfig.skill_sklearn_logo;
+      document.getElementById('skill-matplotlib-img').src = config.skill_matplotlib_logo || defaultConfig.skill_matplotlib_logo;
+      document.getElementById('skill-seaborn-img').src = config.skill_seaborn_logo || defaultConfig.skill_seaborn_logo;
+      document.getElementById('skill-streamlit-img').src = config.skill_streamlit_logo || defaultConfig.skill_streamlit_logo;
+      
+      document.querySelectorAll('.skill-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+        
+        card.querySelector('h3').style.color = textColor;
+        card.querySelector('h3').style.fontSize = `${baseSize * 1.25}px`;
+        
+        const skillDesc = card.querySelector('.skill-desc');
+        skillDesc.style.color = secondaryColor;
+        skillDesc.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      // Projects Section
+      document.getElementById('projects-heading').textContent = config.projects_title || defaultConfig.projects_title;
+      document.getElementById('projects-heading').style.color = primaryColor;
+      document.getElementById('projects-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+
+        const projectImage = card.querySelector('.project-image');
+        if (projectImage) {
+          projectImage.style.border = `1px solid ${primaryColor}33`;
+        }
+        
+        const title = card.querySelector('.project-title');
+        title.style.color = textColor;
+        title.style.fontSize = `${baseSize * 1.875}px`;
+        
+        const desc = card.querySelector('.project-desc');
+        desc.style.color = secondaryColor;
+        desc.style.fontSize = `${baseSize * 1.125}px`;
+        
+        card.querySelectorAll('.tech-tag').forEach(tag => {
+          tag.style.backgroundColor = `${primaryColor}22`;
+          tag.style.color = primaryColor;
+          tag.style.fontSize = `${baseSize * 0.875}px`;
+        });
+        
+        const link = card.querySelector('.project-link');
+        link.style.color = primaryColor;
+        link.style.fontSize = `${baseSize}px`;
+      });
+      
+      // Experience Section
+      document.getElementById('experience-heading').textContent = config.experience_title || defaultConfig.experience_title;
+      document.getElementById('experience-heading').style.color = primaryColor;
+      document.getElementById('experience-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      const timelineLine = document.querySelector('.timeline-line');
+      timelineLine.style.background = `linear-gradient(180deg, ${primaryColor}, ${secondaryColor})`;
+      
+      document.querySelectorAll('.timeline-dot').forEach(dot => {
+        dot.style.backgroundColor = primaryColor;
+        dot.style.border = `4px solid ${surfaceColor}`;
+        dot.style.boxShadow = `0 0 0 4px ${primaryColor}44`;
+      });
+      
+      document.querySelectorAll('.exp-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+        
+        const title = card.querySelector('.exp-title');
+        title.style.color = textColor;
+        title.style.fontSize = `${baseSize * 1.875}px`;
+        
+        const company = card.querySelector('.exp-company');
+        company.style.color = primaryColor;
+        company.style.fontSize = `${baseSize * 1.25}px`;
+        
+        const badge = card.querySelector('.exp-badge');
+        badge.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+        badge.style.color = 'white';
+        badge.style.fontSize = `${baseSize * 0.875}px`;
+        
+        const desc = card.querySelector('.exp-desc');
+        desc.style.color = secondaryColor;
+        desc.style.fontSize = `${baseSize * 1.125}px`;
+      });
+      
+      // Certificates Section
+      document.getElementById('certificates-heading').textContent = config.certificates_title || defaultConfig.certificates_title;
+      document.getElementById('certificates-heading').style.color = primaryColor;
+      document.getElementById('certificates-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      document.querySelectorAll('.cert-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+        
+        const title = card.querySelector('.cert-title');
+        title.style.color = textColor;
+        title.style.fontSize = `${baseSize * 1.25}px`;
+        
+        const org = card.querySelector('.cert-org');
+        org.style.color = secondaryColor;
+        org.style.fontSize = `${baseSize * 0.875}px`;
+        
+        const year = card.querySelector('.cert-year');
+        year.style.color = secondaryColor;
+        year.style.fontSize = `${baseSize * 0.875}px`;
+        
+        const link = card.querySelector('.cert-link');
+        link.style.color = primaryColor;
+        link.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      // Contact Section
+      document.getElementById('contact-heading').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('contact-heading').style.color = primaryColor;
+      document.getElementById('contact-heading').style.fontSize = `${baseSize * 3.125}px`;
+      
+      const contactIntro = document.querySelector('.contact-intro');
+      contactIntro.style.color = textColor;
+      contactIntro.style.fontSize = `${baseSize * 1.25}px`;
+      
+      document.getElementById('contact-email-text').textContent = config.contact_email || defaultConfig.contact_email;
+      document.getElementById('contact-phone-text').textContent = config.contact_phone || defaultConfig.contact_phone;
+      document.getElementById('contact-location-text').textContent = config.contact_location || defaultConfig.contact_location;
+      
+      document.querySelectorAll('.contact-card').forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+        card.style.border = `1px solid ${primaryColor}22`;
+        
+        const iconWrapper = card.querySelector('.contact-icon-wrapper');
+        iconWrapper.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+        iconWrapper.querySelector('svg').style.color = 'white';
+        
+        const label = card.querySelector('.contact-label');
+        label.style.color = textColor;
+        label.style.fontSize = `${baseSize * 1.25}px`;
+        
+        const value = card.querySelector('.contact-value');
+        value.style.color = secondaryColor;
+        value.style.fontSize = `${baseSize * 0.875}px`;
+      });
+      
+      document.querySelectorAll('.social-link').forEach(link => {
+        link.style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+      });
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["name", config.name || defaultConfig.name],
+          ["tagline", config.tagline || defaultConfig.tagline],
+          ["cv_link", config.cv_link || defaultConfig.cv_link],
+          ["about_title", config.about_title || defaultConfig.about_title],
+          ["about_text", config.about_text || defaultConfig.about_text],
+          ["skills_title", config.skills_title || defaultConfig.skills_title],
+          ["projects_title", config.projects_title || defaultConfig.projects_title],
+          ["experience_title", config.experience_title || defaultConfig.experience_title],
+          ["certificates_title", config.certificates_title || defaultConfig.certificates_title],
+          ["contact_title", config.contact_title || defaultConfig.contact_title],
+          ["contact_email", config.contact_email || defaultConfig.contact_email],
+          ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+          ["contact_location", config.contact_location || defaultConfig.contact_location],
+          ["hero_logo_url", config.hero_logo_url || defaultConfig.hero_logo_url],
+          ["skill_python_logo", config.skill_python_logo || defaultConfig.skill_python_logo],
+          ["skill_pandas_logo", config.skill_pandas_logo || defaultConfig.skill_pandas_logo],
+          ["skill_sql_logo", config.skill_sql_logo || defaultConfig.skill_sql_logo],
+          ["skill_tableau_logo", config.skill_tableau_logo || defaultConfig.skill_tableau_logo],
+          ["skill_powerbi_logo", config.skill_powerbi_logo || defaultConfig.skill_powerbi_logo],
+          ["skill_numpy_logo", config.skill_numpy_logo || defaultConfig.skill_numpy_logo],
+          ["skill_sklearn_logo", config.skill_sklearn_logo || defaultConfig.skill_sklearn_logo],
+          ["skill_matplotlib_logo", config.skill_matplotlib_logo || defaultConfig.skill_matplotlib_logo],
+          ["skill_seaborn_logo", config.skill_seaborn_logo || defaultConfig.skill_seaborn_logo],
+          ["skill_streamlit_logo", config.skill_streamlit_logo || defaultConfig.skill_streamlit_logo]
+        ])
+      });
+    }
+    
+    onConfigChange(defaultConfig);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ac627ec87ac6e29',t:'MTc2NTQ2ODQxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
